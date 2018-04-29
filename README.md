@@ -25,6 +25,8 @@ You would also like to configure your AWS account so that jarvis can use it.
 
 Once its configured you are ready talk to jarvis :)
 
-<h4>If everthing goes south you can run using</h4><br>
+<h4>If everthing goes south you can run using</h4>
 
 `python jarvis.py`
+
+## Enjoy talking jarvis 
