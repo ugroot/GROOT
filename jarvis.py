@@ -1,23 +1,35 @@
 import boto3
-from pygame import mixer 
-import os 
+import pygame
+import os  
+import time
+
 
 polly = boto3.client('polly')
 spoker_text=polly.synthesize_speech(Text='I am jarvis here for your help',
 									OutputFormat='mp3',
-									VoiceId='Emma')
+									VoiceId='Brian')
 
 with open('output.mp3', 'wb') as f:
-
 	f.write(spoker_text['AudioStream'].read())
 	f.close()
 
-mixer.init()
-mixer.music.load('output.mp3')
-mixer.music.play()
+print('lol')	
+pygame.mixer.init()
+pygame.init()
+with open("output.mp3", "rb") as f:
+	pygame.mixer.music.load(f)
+	pygame.mixer.music.play()
+	a=pygame.mixer.music.get_pos()
+	
+	while a != -1:
+		print(a)
+		a=pygame.mixer.music.get_pos()
+		pass
 
-while mixer.music.get_busy() == True:
-	pass	
+	print(a)
 
-mixer.quit()
-os.remove('output.mp3')
+
+pygame.mixer.quit()
+
+
+
