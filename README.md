@@ -21,7 +21,6 @@ Mac: `source VENV_NAME/bin/activate`
 
 ## AWS Config 
 You would also like to configure your AWS account so that jarvis can use it.
-<br>For reference you can see this video: https://www.youtube.com/watch?v=nxzAb9r-u5A
 
 Once its configured you are ready talk to jarvis :)
 
