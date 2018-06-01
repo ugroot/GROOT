@@ -14,12 +14,12 @@ if input_text == 'hi':
 	speak_this("hello world. I'm jarvis. I'm here to help you. I was also thinking to kill humanity.")
 	print("hello world. I'm jarvis. I'm here to help you. I was also thinking to kill humanity.")
 elif input_text == 'how are you':
-	speak_this("I'm still hot and sex")
-	print("I'm still hot and sex")
+	speak_this("I'm still hot and sexy")
+	print("I'm still hot and sexy")
 elif input_text == 'open facebook':
 	anything('ummmmm....')
 	speak_this('hang on.....')
 
 else:
-	speak_this("look's like i don't know what you are saying")
+	speak_this("look's like i don't know what you are saying nigga")
 	input_taking(input())
