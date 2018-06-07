@@ -1,4 +1,4 @@
-# jarvis
+# jarvis: Just A Rather Very Intelligent System
 Jarvis: Welcome to my source code, I'm your bro personal assistance helps you make your life easy.    
 I'm written in python.<br>
 jarvis uses amazon polly for text-speech recognition.  
