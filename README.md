@@ -1,7 +1,12 @@
 # jarvis: Just A Rather Very Intelligent System
-Jarvis: Welcome to my source code, I'm your bro personal assistance helps you make your life easy.    
+
+[![Built with ❤](https://forthebadge.com/images/badges/built-with-love.svg)](https://omkar.site/)
+[![forthebadge](https://forthebadge.com/images/badges/for-you.svg)]()
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://python.org)
+<br>
+Welcome to my source code 🙈<br>
 I'm written in python.<br>
-jarvis uses amazon polly for text-speech recognition.  
+
 
 ## Installation
 Clone the repository. Then, follow the installation steps to talk jarvis.
@@ -29,3 +34,4 @@ Once its configured you are ready talk to jarvis :)
 `python jarvis.py`
 
 ## Enjoy talking jarvis 
+
