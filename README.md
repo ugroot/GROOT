@@ -1,4 +1,4 @@
-# jarvis: Just A Rather Very Intelligent System
+# i am GROOT
 
 [![Built with ❤](https://forthebadge.com/images/badges/built-with-love.svg)](https://omkar.site/)
 [![forthebadge](https://forthebadge.com/images/badges/for-you.svg)]()
@@ -31,7 +31,7 @@ Once its configured you are ready talk to jarvis :)
 
 <h4>If everthing goes south you can run using</h4>
 
-`python jarvis.py`
+`python groot.py`
 
 ## Enjoy talking jarvis 
 
