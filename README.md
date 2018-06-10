@@ -9,7 +9,7 @@ I'm written in python.<br>
 
 
 ## Installation
-Clone the repository. Then, follow the installation steps to talk jarvis.
+Clone the repository. Then, follow the installation steps to talk GROOT.
 
 ### Create a Virtual Environemnt
 ```
@@ -25,13 +25,13 @@ Mac: `source VENV_NAME/bin/activate`
 
 
 ## AWS Config 
-You would also like to configure your AWS account so that jarvis can use it.
+You would also like to configure your AWS account so that GROOT can use it.
 
-Once its configured you are ready talk to jarvis :)
+Once its configured you are ready talk to GROOT :)
 
 <h4>If everthing goes south you can run using</h4>
 
 `python groot.py`
 
-## Enjoy talking jarvis 
+## Enjoy talking GROOT 
 
