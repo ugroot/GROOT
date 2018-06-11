@@ -9,12 +9,13 @@ def listen():
         audio = r.listen(source)
     # recognize speech using Google Speech Recognition
     try:
-        print("Google Speech Recognition thinks you said " + r.recognize_google(audio))
+        var=r.recognize_google(audio)
     except sr.UnknownValueError:
-        print("Google Speech Recognition could not understand audio")
+        var="Groot can't understand could not understand audio"
     except sr.RequestError as e:
-        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+        var=" Look's like, there is some problem with Google Speech Recognition"
 
+    return var
 
     #will show all posible text from audio
     #print(r.recognize_google(audio, show_all=True))
