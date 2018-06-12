@@ -23,14 +23,12 @@ def listen_def():
 E1 = Entry(window, width=100)
 E1.bind("<Return>",OnClicked)
 
-#text display
-
 
 #listen button
 L1 = Button(window,text="Press to speak", command=listen_def, height=200)
 L1.pack(side = RIGHT)
 E1.pack()
-ans=""
+ans="Output will be here"
 my_text = Label(window, text=ans, width=100)
 my_text.pack(side=LEFT)
 #this is to make window on top

@@ -17,7 +17,7 @@ def input_taking(input_text_msg):
 
 	whenidontknow=("I am Groot",
 				   "what you are saying bro",
-				   "What the fuck say again",
+				   "What the fuck, say again",
 				   "ok, lets try again")
 
 	l=0
