@@ -25,7 +25,7 @@ Mac: `source VENV_NAME/bin/activate`
 
 ### Install dependencies
 
-```pip install -r requirement```
+```pip install -r requirements.txt ```
 
 ## Enjoy talking GROOT 
 ```python Gui.py```
