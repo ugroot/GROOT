@@ -23,15 +23,10 @@ Linux: `source VENV_NAME/bin/activate`
 
 Mac: `source VENV_NAME/bin/activate`
 
+### Install dependencies
 
-## AWS Config 
-You would also like to configure your AWS account so that GROOT can use it.
-
-Once its configured you are ready talk to GROOT :)
-
-<h4>If everthing goes south you can run using</h4>
-
-`python groot.py`
+```pip install -r requirement```
 
 ## Enjoy talking GROOT 
+```python Gui.py```
 
