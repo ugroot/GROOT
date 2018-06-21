@@ -1,9 +1,10 @@
-import pyttsx3
+from gtts import gTTS
+from playsound import playsound
+import os
+
 
 def speak_this(text_speak):
-
-	groot = pyttsx3.init();
-	voices = groot.getProperty('voices')
-	groot.setProperty('voice', voices[0].id)
-	groot.say(text_speak);
-	groot.runAndWait();
+	tts = gTTS(text_speak)
+	tts.save('speach.mp3')
+	playsound('speach.mp3')
+	os.remove('speach.mp3')

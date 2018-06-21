@@ -7,12 +7,14 @@ def input_taking(input_text_msg):
 	didyousay=('hi groot',
 			  'how are you',
 			  'what is love',
-			  'open facebook'
+			  'open facebook',
+			  'how are you so smart'
 			  )
 
 	ansisthis=("hello, What can i do for you",
 			   "I'm still hot and sexy. Tell me something about you hotty",
-			   "It's is something you should not do"
+			   "It's is something you should not do",
+			   "oh, It is because my Creator is so smart."
 			   )
 
 	whenidontknow=("I am Groot",
