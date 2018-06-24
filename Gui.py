@@ -12,18 +12,32 @@ window.title("I'm Groot")
 #set background colour
 window.configure(background="#D7DBDD")
 
+#this funtion is to remove output evertime
+def removeoutput():
+    global ans, i
+    if i>1:
+        blank.delete(0, END)
+        blank.insert(0, ans)
+
+    else:
+        blank.insert(0, ans)
+    i+=1
+
+#this funtion is to do things on press enter
 def OnClicked(arg=None):
+    global ans
     userData = E1.get()
     ans=input_taking(userData)
     E1.delete(0,END)
-    blank.insert(0, ans)
+    removeoutput()
     return userData
 
-
+#this funtion is to do things on press speak
 def listen_def():
+    global ans
     textfromspeach=listen();
     ans=input_taking(textfromspeach)
-    blank.insert(0, ans)
+    removeoutput()
 
 
 #text input
@@ -33,7 +47,7 @@ E1 = Entry(window, width=60)
 E1.grid(row=0,column=1)
 E1.focus_set()
 E1.bind("<Return>",OnClicked)
-
+i=1
 #listen button
 my_text = Label(window, text="Output:-", width=10)
 my_text.grid(row=1)
