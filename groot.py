@@ -1,7 +1,9 @@
 from text_speach import speak_this
-from asset.something import anything
 from random import randint
-
+import sys
+sys.path.insert(0, 'asset/modules')
+from OpenUrl.openurl import openweb
+import re
 
 def input_taking(input_text_msg):
 	didyousay=('hi groot',
@@ -22,17 +24,26 @@ def input_taking(input_text_msg):
 				   "What the fuck, say again",
 				   "ok, lets try again")
 
-	l=0
-	for i in range(0,3):
-		if didyousay[i]==input_text_msg.lower():
-			speak_this(ansisthis[i])
-			returnvar=ansisthis[i]
-			l=1
+	if re.findall('[A-Z|a-z]{2,}[.][a-z]{2,}', input_text_msg):
+		urls=re.findall('[A-Z|a-z]{2,}[.][a-z]{2,}', input_text_msg)
+		url=urls[0]
+		url_sk=re.findall('([a-z|A-Z]{2,})[.]', url)
+		speak_this('opening'+url_sk[0]+'please wait!!')
+		returnvar="opening'+url_sk[0]+'please wait!!"
+		openweb(url)
 
-	if l==0:
-		i=randint(0, 3)
-		speak_this(whenidontknow[i])
-		returnvar=whenidontknow[i]
+	else:
+		l=0
+		for i in range(0,3):
+			if didyousay[i]==input_text_msg.lower():
+				speak_this(ansisthis[i])
+				returnvar=ansisthis[i]
+				l=1
+
+			if l==0:
+				i=randint(0, 3)
+				speak_this(whenidontknow[i])
+				returnvar=whenidontknow[i]
 
 	return returnvar
 
