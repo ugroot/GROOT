@@ -3,7 +3,9 @@ from random import randint
 import sys
 sys.path.insert(0, 'asset/modules')
 from OpenUrl.openurl import openweb
+from playvideo.play import playthis
 import re
+
 
 def input_taking(input_text_msg):
 	didyousay=('hi groot',
@@ -31,6 +33,13 @@ def input_taking(input_text_msg):
 		speak_this('opening'+url_sk[0]+'please wait!!')
 		returnvar="opening'+url_sk[0]+'please wait!!"
 		openweb(url)
+
+	elif re.findall('[o][n][ ][y][o][u][t][u][b][e]', input_text_msg):
+		 urls=re.findall('[p][l][a][y](.+)[o][n][ ][y][o][u][t]', input_text_msg)
+		 url=str(urls)
+		 speak_this("Let's play"+ url)
+		 returnvar("Let's play"+ url)
+		 playthis(url)
 
 	else:
 		l=0
