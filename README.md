@@ -12,17 +12,21 @@ I'm written in python.<br>
 ## Installation
 Clone the repository. Then, follow the installation steps to talk GROOT.
 
-### Create a Virtual Environemnt
+### Create a Virtual Environemnt(python --version 3.6 required)
 ```
-virtualenv -p python3 VENV_NAME
+virtualenv -p python3.6 VENV_NAME
 ```
-
 ### Activate the venv
 Windows: `VENV_NAME/Scripts/activate`
 
 Linux: `source VENV_NAME/bin/activate`
 
 Mac: `source VENV_NAME/bin/activate`
+
+###For linux users
+
+sudo apt-get install python3.6-dev
+sudo apt-get install python3.6-tk
 
 ### Install dependencies
 
@@ -31,3 +35,6 @@ Mac: `source VENV_NAME/bin/activate`
 ## Enjoy talking GROOT 
 ```python Gui.py```
 
+##Go through linux fix in requirements if ALSA error pop-up
+
+##To use microphone in linux unmute all channels by opening Alsamixer

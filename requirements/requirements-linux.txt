@@ -12,3 +12,9 @@ selenium==3.12.0
 six==1.11.0
 SpeechRecognition==3.8.1
 urllib3==1.23
+pyttsx3
+playsound
+groot
+PyGObject
+PyouPlay==0.1.3
+https://github.com/pygobject/pycairo/releases/download/v1.13.1/pycairo-1.13.1.tar.gz
