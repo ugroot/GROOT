@@ -1,9 +1,7 @@
 from text_speach import speak_this
 from random import randint
-import sys
-sys.path.insert(0, 'asset/modules')
-from OpenUrl.openurl import openweb
-from playvideo.play import playthis
+from asset.modules.OpenUrl.openurl import openweb
+from asset.modules.playvideo.play import playthis
 import re
 
 
@@ -30,15 +28,16 @@ def input_taking(input_text_msg):
 		urls=re.findall('[A-Z|a-z]{2,}[.][a-z]{2,}', input_text_msg)
 		url=urls[0]
 		url_sk=re.findall('([a-z|A-Z]{2,})[.]', url)
-		speak_this('opening'+url_sk[0]+'please wait!!')
-		returnvar="opening'+url_sk[0]+'please wait!!"
+		s='opening %s please wait'%str(url_sk[0])
+		speak_this(s)
+		returnvar=s
 		openweb(url)
 
 	elif re.findall('[o][n][ ][y][o][u][t][u][b][e]', input_text_msg):
 		 urls=re.findall('[p][l][a][y](.+)[o][n][ ][y][o][u][t]', input_text_msg)
 		 url=str(urls)
 		 speak_this("Let's play"+ url)
-		 returnvar("Let's play"+ url)
+		 returnvar=("Let's play"+ url)
 		 playthis(url)
 
 	else:
@@ -49,10 +48,10 @@ def input_taking(input_text_msg):
 				returnvar=ansisthis[i]
 				l=1
 
-			if l==0:
-				i=randint(0, 3)
-				speak_this(whenidontknow[i])
-				returnvar=whenidontknow[i]
+		if l==0:
+			i=randint(0, 3)
+			speak_this(whenidontknow[i])
+			returnvar=whenidontknow[i]
 
 	return returnvar
 
