@@ -23,7 +23,7 @@ Linux: `source VENV_NAME/bin/activate`
 
 Mac: `source VENV_NAME/bin/activate`
 
-###For linux users
+### For linux users
 
 sudo apt-get install python3.6-dev
 sudo apt-get install python3.6-tk
@@ -53,6 +53,5 @@ sudo apt-get install python3.6-tk
 ## Enjoy talking GROOT 
 ```python Gui.py```
 
-##Go through linux fix in requirements if ALSA error pop-up
 
-##To use microphone in linux unmute all channels by opening Alsamixer
+## To use microphone in linux unmute all channels by openingz Alsamixer
