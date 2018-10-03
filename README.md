@@ -12,7 +12,7 @@ I'm written in python.<br>
 ## Installation
 Clone the repository. Then, follow the installation steps to talk GROOT.
 
-### Create a Virtual Environemnt(python --version 3.6 required)
+### Create a Virtual Environment(python --version 3.6 required)
 ```
 virtualenv -p python3.6 VENV_NAME
 ```
@@ -54,4 +54,4 @@ sudo apt-get install python3.6-tk
 ```python Gui.py```
 
 
-## To use microphone in linux unmute all channels by openingz Alsamixer
+## To use microphone in linux unmute all channels by opening Alsamixer
