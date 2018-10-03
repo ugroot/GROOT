@@ -9,6 +9,21 @@ Welcome to my source code 🙈<br>
 I'm written in python.<br>
 
 
+## What is GROOT?
+GROOT is a virtual assistant which generally functions for voice recognition.
+
+## What GROOT can do?
+A virtual assistant basically functions to recognize voice of a person and 
+then implement it.
+
+## How to run GROOT?
+The source code of GROOT is written in python.
+
+## How to Contribute to GROOT?
+To contribute to GROOT,<br>
+Go to the following repository<br>
+https://github.com/omi10859/GROOT
+
 ## Installation
 Clone the repository. Then, follow the installation steps to talk GROOT.
 
