@@ -15,6 +15,15 @@ GROOT is a virtual assistant which generally functions for voice recognition.
 ## What GROOT can do?
 A virtual assistant basically functions to recognize voice of a person and 
 then implement it.
+Functions of GROOT are-
+* It can play video on youtube on your voice command.
+[![Plays video on Youtube]()](https://www.youtube.com/)
+Play video name on youtube
+* It can Open any URL.
+[![Open facebook.com]()](https://www.facebook.com/)
+[![Hey GROOT Can you please open random.in]()]()
+(You dont need to include www)
+
 
 ## How to Contribute to GROOT?
 To contribute to GROOT,<br>
