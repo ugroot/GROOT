@@ -4,7 +4,7 @@ certifi==2018.4.16
 chardet==3.0.4
 click==6.7
 gTTS==2.0.1
-gTTS-token==1.1.1
+gTTS-token==1.1.2
 idna==2.7
 PyAudio==0.2.11
 requests==2.19.1
