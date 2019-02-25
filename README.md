@@ -63,12 +63,15 @@ Mac: `source VENV_NAME/bin/activate`
 
 ### For linux users
 
-sudo apt-get install python3.6-dev
-sudo apt-get install python3.6-tk
+```bash
+sudo apt-get install python3.6-dev python3.6-tk
+```
 
 ### Install dependencies
 
-```pip install -r requirements/requirements[mac/linux/win] ```
+```bash
+pip install -r requirements/requirements[mac/linux/win]
+```
 
 ### TODO list-
 
