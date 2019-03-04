@@ -14,11 +14,15 @@ class Groot_Ui(QWidget):
         inp = QLabel('Input')
         output = QLabel('Output')
 
-        self.inpEdit = QLineEdit()  #Text Field for Input
-        self.outputEdit = QLineEdit() #Text Field for Output
+        #Text Field for Input
+        self.inpEdit = QLineEdit() 
+        #Text Field for Output
+        self.outputEdit = QLineEdit() 
 
-        grid = QGridLayout()  #Outer Layout
-        gridInner = QGridLayout() #Inner layout
+        #Outer Layout
+        grid = QGridLayout()
+        #Inner layout  
+        gridInner = QGridLayout() 
         gridInner.setSpacing(20)
 
         gridInner.addWidget(inp, 1, 0)
@@ -39,8 +43,9 @@ class Groot_Ui(QWidget):
         self.setWindowIcon(QIcon('asset/img/groot.png'))
 
         #Function of speaker button linked:
-        speaker.clicked.connect(listen) #When the Speak button is clicked the listen function
-        #is triggered.
+        speaker.clicked.connect(listen)
+        #When the Speak button is clicked the listen function is triggered.
+        
         self.inpEdit.returnPressed.connect(self.callGroot)
 
         self.show()
