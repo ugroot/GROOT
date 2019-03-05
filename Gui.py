@@ -42,9 +42,9 @@ class Groot_Ui(QWidget):
         self.setWindowTitle('GROOT')
         self.setWindowIcon(QIcon('asset/img/groot.png'))
 
-        #Function of speaker button linked:
-        speaker.clicked.connect(listen)
         #When the Speak button is clicked the listen function is triggered.
+        speaker.clicked.connect(listen)
+        
         
         self.inpEdit.returnPressed.connect(self.callGroot)
 
