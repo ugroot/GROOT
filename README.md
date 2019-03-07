@@ -92,7 +92,7 @@ pip install -r requirements/requirements[mac/linux/win]
 * [ ] Changing Brightness and Redness on command
 
 ## Enjoy talking GROOT 
-```python Gui.py```
+```python base.py```
 
 
 ## To use microphone in linux unmute all channels by opening Alsamixer
