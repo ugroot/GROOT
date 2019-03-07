@@ -80,7 +80,7 @@ pip install -r requirements/requirements[mac/linux/win]
 * [x] speech-to-text
 * [x] Voice commands
 * [x] Text commands
-* [ ] [Rethinking GUI](https://github.com/omi10859/GROOT/issues/8)
+* [x] [Rethinking GUI](https://github.com/omi10859/GROOT/issues/8)
 * Modules:
     * [x] Playing Songs on YouTube with voice commands
     * [x] Opening URLs in Browser
