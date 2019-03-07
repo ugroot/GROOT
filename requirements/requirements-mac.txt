@@ -97,6 +97,8 @@ pyobjc-framework-SystemConfiguration==4.2.2
 pyobjc-framework-Vision==4.2.2
 pyobjc-framework-WebKit==4.2.2
 PyouPlay==0.1.3
+PyQt5==5.12
+PyQt5-sip==4.19.14
 pystan==2.17.1.0
 requests==2.19.1
 selenium==3.12.0
