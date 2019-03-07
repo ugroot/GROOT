@@ -22,7 +22,7 @@ Play video name on youtube
 * It can Open any URL.
 [![Open facebook.com]()](https://www.facebook.com/)
 [![Hey GROOT Can you please open random.in]()]()
-(You dont need to include www)
+(No need to include www)
 
 
 ## How to Contribute to GROOT?
@@ -80,7 +80,7 @@ pip install -r requirements/requirements[mac/linux/win]
 * [x] speech-to-text
 * [x] Voice commands
 * [x] Text commands
-* [ ] [Rethinking GUI](https://github.com/omi10859/GROOT/issues/8)
+* [x] [Rethinking GUI](https://github.com/omi10859/GROOT/issues/8)
 * Modules:
     * [x] Playing Songs on YouTube with voice commands
     * [x] Opening URLs in Browser
@@ -92,7 +92,7 @@ pip install -r requirements/requirements[mac/linux/win]
 * [ ] Changing Brightness and Redness on command
 
 ## Enjoy talking GROOT 
-```python Gui.py```
+```python base.py```
 
 
 ## To use microphone in linux unmute all channels by opening Alsamixer
