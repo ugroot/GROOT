@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QPushButton,QWidget, QMessageBox, QTextEdit, QLabel,
 from PyQt5.QtGui import QIcon
 from speechtotext import listen
 from texttospeech import speak_this
+from groot import input_taking
 
 class Groot_Ui(QWidget):
     def __init__(self):
@@ -43,7 +44,7 @@ class Groot_Ui(QWidget):
         self.setWindowIcon(QIcon('asset/img/groot.png'))
 
         #When the Speak button is clicked the listen function is triggered.
-        speaker.clicked.connect(listen)
+        speaker.clicked.connect(self.listen_reply)
         
         
         self.inpEdit.returnPressed.connect(self.callGroot)
@@ -53,7 +54,13 @@ class Groot_Ui(QWidget):
     
     def callGroot(self):
         typed = str(self.inpEdit.text())
-        speak_this(typed)
+        reply = input_taking(typed)
+        self.outputEdit.setText(reply)
+
+    def listen_reply(self):
+        spoken = listen()
+        reply = input_taking(spoken)
+        self.outputEdit.setText(reply)
 
 
     #Function to display warning message for quitting

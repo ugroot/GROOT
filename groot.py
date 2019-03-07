@@ -52,7 +52,7 @@ def input_taking(input_text_msg):
 			i=randint(0, 3)
 			speak_this(whenidontknow[i])
 			returnvar=whenidontknow[i]
-
+			
 	return returnvar
 
 	# if input_text_msg.lowercase() == 'hi groot':

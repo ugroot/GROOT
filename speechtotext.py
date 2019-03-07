@@ -11,9 +11,9 @@ def listen():
     try:
         var=r.recognize_google(audio)
     except sr.UnknownValueError:
-        var="Groot can't understand could not understand audio"
+        var="Groot could not understand audio"
     except sr.RequestError:
-        var=" Look's like, there is some problem with Google Speech Recognition"
+        var=" Looks like, there is some problem with Google Speech Recognition"
 
     return var
 
