@@ -22,7 +22,7 @@ Play video name on youtube
 * It can Open any URL.
 [![Open facebook.com]()](https://www.facebook.com/)
 [![Hey GROOT Can you please open random.in]()]()
-(You dont need to include www)
+(No need to include www)
 
 
 ## How to Contribute to GROOT?
