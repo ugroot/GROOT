@@ -13,18 +13,19 @@ class MainWindow(QWidget):
         super(MainWindow,self).__init__()
 
         self.MainLayout = QVBoxLayout()
-
+        self.elementLayout = QVBoxLayout()
+    
         
         val = news_func()
-        print(val)
-        url = val['articles'][0]['url']
+        #print(val)
+        url = val[0]['url']
         self.text = QLabel()
         self.text.setText('<a href="%s">Link</a>'%url)
         self.text.setOpenExternalLinks(True)
         self.box = myBox()
         self.MainLayout.addLayout(self.box.myBoxLayout)
 
-        imageUrl = val['articles'][0]['urlToImage'] 
+        imageUrl = val[0]['urlToImage'] 
         data = urllib.request.urlopen(imageUrl).read()
 
         self.image = QImage()
@@ -34,8 +35,15 @@ class MainWindow(QWidget):
         #To Keep The Aspect Ratio Upto the Maximum Size
         self.lbl.setPixmap(QPixmap(self.image).scaled(64,64,Qt.KeepAspectRatio))
 
-        self.MainLayout.addWidget(self.text)
-        self.MainLayout.addWidget(self.lbl)
+        self.words = QLabel("This is a text")
+        self.words2 = QLabel("This is another text")
+        self.elementLayout.addWidget(self.text)
+        self.elementLayout.setSpacing(10.0)
+        self.elementLayout.addWidget(self.text)
+        self.elementLayout.addWidget(self.words)
+        self.elementLayout.addWidget(self.words2)
+        #self.elementLayout.setColumnStretch(10,10)
+        self.MainLayout.addLayout(self.elementLayout)
         #self.MainLayout.addWidget(self.label)
         self.setLayout(self.MainLayout)
         self.setGeometry(100,100,400,400)

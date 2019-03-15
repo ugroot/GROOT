@@ -98,9 +98,12 @@ class TabLayout(QTabWidget):
         articles = news_func()
         for article in articles:
             self.block = newsElements(article['title'],article['description'],article['url'],article['urlToImage'],parent=None)
-            self.scroll_layout.addWidget(self.block)
+            self.scroll_layout.addWidget(self.block) #This line is messing up with something.
+            print(self.block.textHeading)
+            print(type(self.block)) #Works correctly till here.
+    
 
-        self.news.setWidgetResizable(True)
+        #self.news.setWidgetResizable(True)
         self.news.setWidget(self.scroll_widget)
 
         self.wiki = QWidget()
@@ -112,6 +115,7 @@ class TabLayout(QTabWidget):
 class newsElements(QWidget):
     def __init__(self,Heading="None",SubHeading="None",Url="None",ImageUrl="None",parent="None"):
         super(newsElements,self).__init__()
+        self.textHeading = Heading
         self.elementLayout = QGridLayout()
         self.textLayout = QVBoxLayout()
         self.heading = QLabel('<b>%s</b>'%Heading)

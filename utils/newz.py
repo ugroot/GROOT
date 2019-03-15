@@ -1,6 +1,6 @@
 #newsapi.org Great Api
 #https://newsapi.org/docs/endpoints/everything
-from newsapi import NewsApiClient
+from newsapi.newsapi_client import NewsApiClient
 # Init
 newsapi = NewsApiClient(api_key='2b613eac07a2422996b431ce5b9c68fa')
 
