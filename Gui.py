@@ -4,8 +4,9 @@ from PyQt5.QtCore import Qt
 from speechtotext import listen
 from texttospeech import speak_this
 from groot import input_taking
-from utils.newz import news_func
+from utils.newsLibrary import news_func
 import urllib.request
+
 
 class Groot_Ui(QWidget):
     def __init__(self):
@@ -13,30 +14,30 @@ class Groot_Ui(QWidget):
         self.initUI()
 
     def initUI(self):
-        mainLayout = QVBoxLayout()
-    
-        self.upperLayout = inpOutLayout()
-        mainLayout.addLayout(self.upperLayout.inpOutLayout)
-
-        self.tabs = TabLayout()
-        #This line sets max width for the news tab but still it is cutting some of the element.
-        #self.tabs.scroll_widget.setMaximumWidth(self.tabs.width())
-        mainLayout.addWidget(self.tabs.customTab)
-        mainLayout.setSpacing(20.0)
+        self.mainLayout = QVBoxLayout()
+        self.upperLayout = inpOutWidgetLayout()
+        self.mainLayout.addLayout(self.upperLayout.inpOutLayout)
+        #self.mainLayout.addStretch(1)
         
-        self.setLayout(mainLayout)
-        self.setGeometry(150,150,800,500)
+        self.lowerLayout = TabLayout()
+        self.mainLayout.addWidget(self.lowerLayout.customTab)
+
+        self.setLayout(self.mainLayout)
         self.setWindowTitle('GROOT')
         self.setWindowIcon(QIcon('asset/img/groot.png'))
-
-        #Functions and Activities linked with the Gui
-
-        #When the Speak button is clicked the listen function is triggered.
-        self.upperLayout.speaker.clicked.connect(self.listen_reply)
-        #When Input is done and enter is pressed the Groot starts processing it.
-        self.upperLayout.inpEdit.returnPressed.connect(self.callGroot)
+        self.setGeometry(150,150,800,500)
         self.show()
-             
+
+        #Other Functions:
+        self.upperLayout.speaker.clicked.connect(self.listen_reply)
+        # self.upperLayout.refresh.clicked.connect(self.createPopup)
+        self.upperLayout.inputEdit.returnPressed.connect(self.callGroot)
+
+
+    # def createPopup(self):
+    #     popup = Popup()
+    #     popup.show()
+
     def callGroot(self):
         typed = str(self.upperLayout.inpEdit.text())
         reply = input_taking(typed)
@@ -48,8 +49,7 @@ class Groot_Ui(QWidget):
         self.upperLayout.outputEdit.setText(reply)
 
     def keyPressEvent(self, e):
-        
-        if e.key() == Qt.Key_Escape:
+        if e.key() == Qt.Key_Escape:                
             self.close()
 
 
@@ -63,27 +63,44 @@ class Groot_Ui(QWidget):
         else:
             event.ignore()
 
-class inpOutLayout(QGridLayout):
+
+
+
+class inpOutWidgetLayout(QVBoxLayout):
     def __init__(self,parent=None):
-        super(inpOutLayout,self).__init__()
-        self.inp = QLabel('Input')
-        self.output = QLabel('Output')
+        super(inpOutWidgetLayout,self).__init__()
+        #Grid Layout for the upper part.
         self.inpOutLayout = QGridLayout()
+
+        self.inputLabel = QLabel('Input')
+        self.inputLabel.setMinimumSize(self.sizeHint())
+        self.outputLabel = QLabel('Output')
+        self.inputLabel.setMinimumSize(self.sizeHint())
+        #Speaker Widget
+        self.speaker = QPushButton('Speak')
+        self.speaker.setMinimumSize(self.sizeHint())
         #Text Field for Input
-        self.inpEdit = QLineEdit() 
+        self.inputEdit = QLineEdit()
+        self.inputEdit.setMinimumSize(self.sizeHint()) 
         #Text Field for Output
         self.outputEdit = QLineEdit()
-        self.inp_outLayout = QGridLayout()
+        self.outputEdit.setMinimumSize(self.sizeHint())
+        #Refresh Button
+        self.refresh  = QPushButton('Refresh')
+        self.refresh.setMinimumSize(self.sizeHint())
         #Spacing between the widgets
         self.inpOutLayout.setSpacing(20)
         #Positioning Inner Widgets
-        self.inpOutLayout.addWidget(self.inp, 1, 0)
-        self.inpOutLayout.addWidget(self.inpEdit, 1, 1)
-        self.inpOutLayout.addWidget(self.output, 2, 0)
-        self.inpOutLayout.addWidget(self.outputEdit, 2, 1)
-        #Button is needed in parallel.
-        self.speaker = QPushButton('Speak')
+        self.inpOutLayout.addWidget(self.inputLabel, 1, 0)
+        self.inpOutLayout.addWidget(self.inputEdit, 1, 1)
         self.inpOutLayout.addWidget(self.speaker,1,2)
+        self.inpOutLayout.addWidget(self.outputLabel, 2, 0)
+        self.inpOutLayout.addWidget(self.outputEdit, 2, 1)
+        self.inpOutLayout.addWidget(self.refresh,2,2)
+
+        #Button is needed in parallel.
+        
+        
 
 class TabLayout(QTabWidget):
     def __init__(self,parent=None):
@@ -94,48 +111,49 @@ class TabLayout(QTabWidget):
         self.scroll_widget = QWidget()
         self.scroll_layout = QVBoxLayout(self.scroll_widget)
         self.scroll_layout.setSpacing(20.0)
-        
         articles = news_func()
-        for article in articles:
-            self.block = newsElements(article['title'],article['description'],article['url'],article['urlToImage'],parent=None)
-            self.scroll_layout.addWidget(self.block) #This line is messing up with something.
-            print(self.block.textHeading)
-            print(type(self.block)) #Works correctly till here.
-    
 
-        #self.news.setWidgetResizable(True)
+        for article in articles:
+            self.myLabel = Tiles(parent="None",description = article['description'][0:100],title=article['title'],url=article['url'],urlImage=article['urlToImage'])
+            self.scroll_layout.addLayout(self.myLabel.tileLayout)
+
         self.news.setWidget(self.scroll_widget)
 
         self.wiki = QWidget()
         
         self.customTab.addTab(self.news,"News")
-        self.customTab.addTab(self.wiki,"Wiki")
-        #self.news.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.MinimumExpanding)
-        
-class newsElements(QWidget):
-    def __init__(self,Heading="None",SubHeading="None",Url="None",ImageUrl="None",parent="None"):
-        super(newsElements,self).__init__()
-        self.textHeading = Heading
-        self.elementLayout = QGridLayout()
-        self.textLayout = QVBoxLayout()
-        self.heading = QLabel('<b>%s</b>'%Heading)
-        self.subHeading = QLabel('<b><a href="{}">{}More</a></b>'.format(Url,SubHeading))
+        self.customTab.addTab(self.wiki,"Add More Feature")
 
-        data = urllib.request.urlopen(ImageUrl).read()
+class Tiles(QWidget):
+    def __init__(self,parent="None",title="None",description="None",url="None",urlImage="None"):
+        super(Tiles,self).__init__()
+        #Heading Widget
+        self.heading = QLabel('<b>%s</b>'%title)
+        #SubHeading Widget with link to open in browser
+        self.subHeading = QLabel('{}<a href="{}">...more</a>'.format(description,url))
+        self.subHeading.setOpenExternalLinks(True)
+        #Image Widget with article
+        data = urllib.request.urlopen(urlImage).read()
         self.image = QImage()
         self.image.loadFromData(data)
+        self.imageLabel = QLabel("image")
+        self.imageLabel.setPixmap(QPixmap(self.image).scaled(64,64,Qt.KeepAspectRatio))
+        self.tileLayout = QGridLayout()
+        self.tileLayout.addWidget(self.heading,1,0)
+        self.tileLayout.addWidget(self.imageLabel,1,1)
+        self.tileLayout.addWidget(self.subHeading,2,0)
 
-        self.lbl = QLabel("image")
-        self.lbl.setPixmap(QPixmap(self.image).scaled(64,64,Qt.KeepAspectRatio))
+# class Popup(QWidget):
+#     def __init__(self, parent=None):
+#         super(Popup,self).__init__()
+#         self.PopupLayout = QGridLayout()
+#         self.title("Hi I am Groot Why Don't you add a Keyword to search in news?")
+#         self.keywordField = QLineEdit()
+#         self.keywordField.returnPressed.connect(closemyself)
 
-        self.textLayout.addWidget(self.heading)
-        self.textLayout.addWidget(self.subHeading)
-        self.elementLayout.addLayout(self.textLayout,1,0)
-        self.elementLayout.addWidget(self.lbl,1,1)
+#         def closemyself():
+#             typed = str(self.keywordField.text())
 
-        
-        
-
-
-
-
+#         self.setGeometry(150,150,800,500)
+#         print("I am created")
+#         self.show()

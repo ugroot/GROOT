@@ -1,1 +1,0 @@
-import wikipediaapi as wk
