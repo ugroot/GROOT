@@ -41,7 +41,7 @@ class Groot_Ui(QWidget):
     def callGroot(self):
         typed = str(self.upperLayout.inputEdit.text())
         reply = input_taking(typed)
-        self.outputEdit.setText(reply)
+        self.upperLayout.outputEdit.setText(reply)
 
     def listen_reply(self):
         spoken = listen()
