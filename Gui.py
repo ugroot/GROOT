@@ -39,7 +39,7 @@ class Groot_Ui(QWidget):
     #     popup.show()
 
     def callGroot(self):
-        typed = str(self.upperLayout.inpEdit.text())
+        typed = str(self.upperLayout.inputEdit.text())
         reply = input_taking(typed)
         self.outputEdit.setText(reply)
 
