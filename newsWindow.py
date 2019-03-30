@@ -1,22 +1,20 @@
-from PyQt5.QtWidgets import QWidget,QLabel,QLineEdit,QGridLayout,QPushButton,QMessageBox,QComboBox,QApplication,QVBoxLayout,QTabWidget,QScrollArea,QFormLayout,QSizePolicy
+from PyQt5.QtWidgets import QWidget,QLabel,QGridLayout,QMessageBox,QVBoxLayout,QTabWidget,QScrollArea,QFormLayout,QSizePolicy
 from PyQt5.QtGui import QIcon,QImage,QPixmap
 from PyQt5.QtCore import Qt
-from speechtotext import listen
-from texttospeech import speak_this
-from groot import input_taking
 from asset.modules.newsLib.newsLibrary import news_func
 import urllib.request
 
 
 class newsBox(QWidget):
-    def __init__(self):
+    def __init__(self,passedKeywords):
         super(newsBox,self).__init__()
+        self.keywords = passedKeywords
         self.initUI()
 
     def initUI(self):
         self.mainLayout = QVBoxLayout()
         
-        self.lowerLayout = TabLayout()
+        self.lowerLayout = TabLayout(self.keywords)
         self.mainLayout.addWidget(self.lowerLayout.customTab)
 
         self.setLayout(self.mainLayout)
@@ -42,14 +40,15 @@ class newsBox(QWidget):
 
         
 class TabLayout(QTabWidget):
-    def __init__(self,parent=None):
+    def __init__(self,passedKeywords):
         super(TabLayout,self).__init__()
+        self.keywords = passedKeywords
         self.customTab = QTabWidget()
         self.news = QScrollArea()
         self.scroll_widget = QWidget()
         self.scroll_layout = QVBoxLayout(self.scroll_widget)
         self.scroll_layout.setSpacing(20.0)
-        articles = news_func()
+        articles = news_func(self.keywords)
 
         for article in articles:
             self.myLabel = Tiles(parent="None",description = article['description'][0:100],title=article['title'],url=article['url'],urlImage=article['urlToImage'])
@@ -69,7 +68,10 @@ class Tiles(QWidget):
         self.subHeading = QLabel('{}<a href="{}">...more</a>'.format(description,url))
         self.subHeading.setOpenExternalLinks(True)
         #Image Widget with article
-        data = urllib.request.urlopen(urlImage).read()
+        try:
+            data = urllib.request.urlopen(urlImage).read()
+        except:
+            data = urllib.request.urlopen("https://ibb.co/XY30sjs").read()
         self.image = QImage()
         self.image.loadFromData(data)
         self.imageLabel = QLabel("image")
