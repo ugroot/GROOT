@@ -123,3 +123,7 @@ dmypy.json
 
 *.mp3
 
+
+#credentials
+*.json
+

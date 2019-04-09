@@ -6,7 +6,6 @@ from texttospeech import speak_this
 from groot import input_taking
 from newsWindow import newsBox
 from asset.modules.newsLib.newsLibrary import news_func
-import urllib.request
 
 
 class Groot_Ui(QWidget):
