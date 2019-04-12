@@ -5,6 +5,7 @@ from speechtotext import listen
 from texttospeech import speak_this
 from groot import input_taking
 from newsWindow import newsBox
+from notesWindow import noteCreationBox
 from asset.modules.newsLib.newsLibrary import news_func
 
 
@@ -29,10 +30,16 @@ class Groot_Ui(QWidget):
         self.upperLayout.speaker.clicked.connect(self.listen_reply)
         self.upperLayout.inputEdit.returnPressed.connect(self.callGroot)
 
-    def createNewsLayout(self, keywords):
-        print(keywords)
-        self.newsWindow = newsBox(keywords)
-        self.newsWindow.show() 
+    def createAdditionalLayout(self, keywords,type):
+        if type == "news":
+            print(keywords)
+            self.newsWindow = newsBox(keywords)
+            self.newsWindow.show() 
+        
+        if type == "notes":
+            print("Showing notes")
+            self.noteWindow = noteCreationBox()
+            self.noteWindow.show()
 
     #Function for typing in the input Field
     def callGroot(self):
@@ -41,6 +48,7 @@ class Groot_Ui(QWidget):
         if reply[0] == 'news':
             speak_this("Showing news")
             self.upperLayout.outputEdit.setText("Showing news")
+        
             
         self.upperLayout.outputEdit.setText(reply[1])
 
@@ -48,10 +56,16 @@ class Groot_Ui(QWidget):
         spoken = listen()
         reply = input_taking(spoken)
         if reply[0] == 'news':
+            self.upperLayout.outputEdit.setText("Showing news")
             speak_this("Showing news")
             print(reply[1])
-            self.createNewsLayout(reply[1])
-            self.upperLayout.outputEdit.setText("Showing news")   
+            self.createAdditionalLayout(reply[1],type="news")
+               
+        elif reply[0] == 'notes':
+            speak_this("Opening Notes")
+            self.upperLayout.outputEdit.setText("Showing Note Widget")
+            self.createAdditionalLayout(["No need"],type="notes")
+            
         else:
             self.upperLayout.outputEdit.setText(reply[1])
 

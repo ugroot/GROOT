@@ -66,7 +66,3 @@ def getGrootFolderContent():
         fileDict[key] = content
     
     return fileDict
-        
-
-val = getGrootFolderContent()
-print(val)
