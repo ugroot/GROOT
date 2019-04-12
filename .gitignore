@@ -121,3 +121,5 @@ dmypy.json
 #vscode
 .vscode/
 
+*.mp3
+
