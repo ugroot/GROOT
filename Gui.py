@@ -51,8 +51,13 @@ class Groot_Ui(QWidget):
             speak_this("Showing news")
             self.upperLayout.outputEdit.setText("Showing news")
         
-            
-        self.upperLayout.outputEdit.setText(reply[1])
+        elif reply[0] == 'notes':
+            speak_this("Opening Notes")
+            self.upperLayout.outputEdit.setText("Showing Note Widget")
+            self.createAdditionalLayout(["No need"],type="notes")
+        
+        else:    
+            self.upperLayout.outputEdit.setText(reply[1])
 
     def listen_reply(self):
         spoken = listen()
