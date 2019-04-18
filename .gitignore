@@ -127,3 +127,5 @@ dmypy.json
 #credentials
 *.json
 
+#admin-credentials
+asset/img/login/*
