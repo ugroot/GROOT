@@ -129,3 +129,6 @@ dmypy.json
 
 #admin-credentials
 asset/img/login/*
+
+#testing
+testing/

@@ -1,12 +1,14 @@
 from PyQt5.QtWidgets import QWidget,QLabel,QLineEdit,QGridLayout,QPushButton,QMessageBox,QComboBox,QApplication,QVBoxLayout,QTabWidget,QScrollArea,QFormLayout,QSizePolicy
 from PyQt5.QtGui import QIcon,QImage,QPixmap
 from PyQt5.QtCore import Qt
+
 from speechtotext import listen
 from texttospeech import speak_this
 from groot import input_taking
 from newsWindow import newsBox
 from notesWindow import noteCreationBox
 from asset.modules.newsLib.newsLibrary import news_func
+from bored import boredomKiller
 
 
 class Groot_Ui(QWidget):
@@ -65,9 +67,17 @@ class Groot_Ui(QWidget):
             speak_this("Opening Notes")
             self.upperLayout.outputEdit.setText("Showing Note Widget")
             self.createAdditionalLayout(["No need"],type="notes")
-            
+
+        elif reply[0] == 'surprise':
+            speak_this("I have a cure for Boredom")
+            self.upperLayout.outputEdit.setText("Check Your Browser")
+            self.bore()
+
         else:
             self.upperLayout.outputEdit.setText(reply[1])
+
+    def bore(self):
+        boredomKiller()
 
 
     def keyPressEvent(self, e):
