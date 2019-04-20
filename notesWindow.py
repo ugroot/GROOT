@@ -50,7 +50,7 @@ class noteCreationWidgetLayout(QWidget):
     def createNewFile(self):
         """File is created in Groot/ in Google Drive
         heading: file with title in the GUI is passed as heading
-        summart: file content"""
+        summary: file content"""
 
         result = createFile(self.titleEdit.text(),self.summaryEdit.toPlainText())
         if result == 'Successful':
