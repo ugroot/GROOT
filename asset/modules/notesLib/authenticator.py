@@ -25,10 +25,10 @@ def getGrootFolderId(drive):
 def getFileList(drive):
     """Gives the file list inside of the Groot Folder"""
     
-    file_list = drive.ListFile({'q': "'11--DsLz-mGaNvL0nOzhUeQ7RmMcV-BZC' in parents and trashed=false"}).GetList()
+    folderId = getGrootFolderId(drive)
+    file_list = drive.ListFile({'q': "'%s' in parents and trashed=false"%folderId}).GetList()
     filedict = {}
     for file1 in file_list:
-        #print ('title: %s, id: %s' % (file1['title'], file1['id']))
         filedict[file1['title']]= file1['id']
     return filedict
 
