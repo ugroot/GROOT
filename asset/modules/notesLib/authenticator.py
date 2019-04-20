@@ -38,9 +38,9 @@ def createFile(filename,fileContent):
     fileContent = "Content of file"
     """
     drive = driveAuthorization()
-    fid = getGrootFolderId(drive)
+    folderid = getGrootFolderId(drive)
     fileList = getFileList(drive)
-    if fid:
+    if folderid:
         print("Groot Folder Found and Fid Created")
     else:
         return "Fid not found please create folder named Groot in your Google Drive"
