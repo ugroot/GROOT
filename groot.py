@@ -6,6 +6,14 @@ import re
 
 
 def input_taking(input_text_msg):
+
+	if re.findall("^news",input_text_msg):
+		keywords = str(input_text_msg).split()
+		return [keywords[0],keywords[1:]]
+
+	if re.match(".*[open mail|mail|groot mail|shoot mail|gmail|mail it].*",input_text_msg):
+		return ["mail", "Mail Tab"]
+		
 	didyousay=('hi groot',
 			  'how are you',
 			  'what is love',
@@ -53,23 +61,4 @@ def input_taking(input_text_msg):
 			speak_this(whenidontknow[i])
 			returnvar=whenidontknow[i]
 			
-	return returnvar
-
-	# if input_text_msg.lowercase() == 'hi groot':
-	# 	speak_this("hello")
-	# 	return "hello world. I'm jarvis. I'm here to help you. I was also thinking to kill humanity."
-	#
-	# elif input_text_msg.lowercase() == 'how are you':
-	# 	speak_this("I'm still hot and sexy")
-	# 	return "I'm still hot and sexy"
-	#
-	# elif input_text_msg.lowercase() == 'what is love':
-	# 	speak_this("It's is something you should not do")
-	# 	return "I'm still hot and sexy"
-	#
-	# elif input_text_msg.lowercase() == 'open facebook':
-	# 	speak_this('hang on.....')
-	#
-	# else:
-	# 	speak_this("I am Groot")
-	# 	return "I am Groot"
+	return ["not news",returnvar]
