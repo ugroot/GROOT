@@ -11,8 +11,10 @@ def input_taking(input_text_msg):
 		keywords = str(input_text_msg).split()
 		return [keywords[0],keywords[1:]]
 
+
 	if re.match(".*[open mail|mail|groot mail|shoot mail|gmail|mail it].*",input_text_msg):
 		return ["mail", "Mail Tab"]
+
 		
 	didyousay=('hi groot',
 			  'how are you',

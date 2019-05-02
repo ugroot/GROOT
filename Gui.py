@@ -43,6 +43,12 @@ class Groot_Ui(QWidget):
             self.mailWindow = mailWin()
             self.mailWindow.show()
 
+    def createNewsLayout(self, keywords):
+        print(keywords)
+        self.newsWindow = newsBox(keywords)
+        self.newsWindow.show() 
+
+
     #Function for typing in the input Field
     def callGroot(self):
         typed = str(self.upperLayout.inputEdit.text())
@@ -58,9 +64,7 @@ class Groot_Ui(QWidget):
 
         else:
             self.upperLayout.outputEdit.setText(reply[1])
-
-        
-
+            
     def listen_reply(self):
         spoken = listen()
         reply = input_taking(spoken)
