@@ -10,6 +10,12 @@ def input_taking(input_text_msg):
 	if re.findall("^news",input_text_msg):
 		keywords = str(input_text_msg).split()
 		return [keywords[0],keywords[1:]]
+
+	if re.match(".*[open docs|docs|groot docs|open notes|take note|take notes].*",input_text_msg):
+		return ["notes", "Note Tab"]
+
+	if re.match(".*[bored|surprise me|surprise].*", input_text_msg):
+		return ["surprise", "Link Exploration"]
 		
 	didyousay=('hi groot',
 			  'how are you',

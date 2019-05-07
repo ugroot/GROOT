@@ -123,3 +123,12 @@ dmypy.json
 
 *.mp3
 
+
+#credentials
+*.json
+
+#admin-credentials
+asset/img/login/*
+
+#testing
+testing/
