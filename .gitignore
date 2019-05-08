@@ -29,6 +29,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 pip-selfcheck.json
+.DS_Store
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -123,3 +124,12 @@ dmypy.json
 
 *.mp3
 
+
+#credentials
+*.json
+
+#admin-credentials
+asset/img/login/*
+
+#testing
+testing/

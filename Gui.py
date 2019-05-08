@@ -1,13 +1,18 @@
 from PyQt5.QtWidgets import QWidget,QLabel,QLineEdit,QGridLayout,QPushButton,QMessageBox,QComboBox,QApplication,QVBoxLayout,QTabWidget,QScrollArea,QFormLayout,QSizePolicy
 from PyQt5.QtGui import QIcon,QImage,QPixmap
 from PyQt5.QtCore import Qt
+
 from speechtotext import listen
 from texttospeech import speak_this
 from groot import input_taking
 from newsWindow import newsBox
+
 from mailWindow import mailWin
+
+from notesWindow import noteCreationBox
+
 from asset.modules.newsLib.newsLibrary import news_func
-import urllib.request
+from bored import boredomKiller
 
 
 class Groot_Ui(QWidget):
@@ -31,13 +36,17 @@ class Groot_Ui(QWidget):
         self.upperLayout.speaker.clicked.connect(self.listen_reply)
         self.upperLayout.inputEdit.returnPressed.connect(self.callGroot)
 
+
     
+
+
     def createAdditionalLayout(self, keywords,type):
         if type == "news":
             print(keywords)
             self.newsWindow = newsBox(keywords)
             self.newsWindow.show() 
         
+
         if type == "mail":
             print("Showing notes")
             self.mailWindow = mailWin()
@@ -48,6 +57,12 @@ class Groot_Ui(QWidget):
         self.newsWindow = newsBox(keywords)
         self.newsWindow.show() 
 
+        if type == "notes":
+            print("Showing notes")
+            self.noteWindow = noteCreationBox()
+            self.noteWindow.show()
+
+
 
     #Function for typing in the input Field
     def callGroot(self):
@@ -56,6 +71,12 @@ class Groot_Ui(QWidget):
         if reply[0] == 'news':
             speak_this("Showing news")
             self.upperLayout.outputEdit.setText("Showing news")
+
+
+        
+            
+        self.upperLayout.outputEdit.setText(reply[1])
+
 
         elif reply[0] == 'mail':
             speak_this("Opening Mail Service")
@@ -73,14 +94,34 @@ class Groot_Ui(QWidget):
             speak_this("Showing news")
             print(reply[1])
             self.createAdditionalLayout(reply[1],type="news")
+
         
         elif reply[0] == 'mail':
             self.upperLayout.outputEdit.setText("Mail Service")
             speak_this("Opening Mail Service")
             self.createAdditionalLayout(reply[1],type="mail")
 
+               
+        elif reply[0] == 'notes':
+            speak_this("Opening Notes")
+            self.upperLayout.outputEdit.setText("Showing Note Widget")
+            self.createAdditionalLayout(["No need"],type="notes")
+
+        elif reply[0] == 'surprise':
+            speak_this("I have a cure for Boredom")
+            self.upperLayout.outputEdit.setText("Check Your Browser")
+            self.bore()
+
+
         else:
             self.upperLayout.outputEdit.setText(reply[1])
+
+
+
+    def bore(self):
+        boredomKiller()
+
+
 
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:                
